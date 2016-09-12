@@ -1,5 +1,6 @@
 package indexer.skml.ui
 
+import android.graphics.Color
 import android.text.InputType.TYPE_CLASS_TEXT
 import android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
 import android.view.Gravity
@@ -14,14 +15,11 @@ class MainActivityUi : AnkoComponent<MainActivity> {
   override fun createView(ui: AnkoContext<MainActivity>) = with(ui) {
     verticalLayout {
       gravity = Gravity.CENTER_VERTICAL
-      backgroundColor = R.color.colorAccent
       padding = dip(resources.getDimension(R.dimen.activity_horizontal_margin))
 
       val userName = editText {
         hintResource = R.string.app_name
-        textResource = R.string.app_name
       }
-
 
       val userPassword = editText {
         hintResource = R.string.password
@@ -29,18 +27,22 @@ class MainActivityUi : AnkoComponent<MainActivity> {
       }
 
       val loginButton = button {
+
         textResource = R.string.login
+        backgroundColor = Color.parseColor("#388E3C")
+        textColor = Color.parseColor("#ebebeb")
         lparams {
           width = matchParent
           height = wrapContent
           minHeight = 48
         }
         onClick {
-          toast("Hello,${userName.text}")
+          toast("${userName.text} +${userPassword.text}")
         }
       }
     }
 
   }
 }
+
 
