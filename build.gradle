@@ -1,0 +1,40 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+  ext.kotlin_version = '1.0.3'
+  ext.anko_version = '0.9'
+  repositories {
+    jcenter()
+  }
+  dependencies {
+    classpath 'com.android.tools.build:gradle:2.2.0-rc1'
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    // NOTE: Do not place your application dependencies here; they belong
+    // in the individual module build.gradle files
+  }
+}
+apply plugin: 'kotlin'
+
+allprojects {
+  repositories {
+    jcenter()
+  }
+}
+
+task clean(type: Delete) {
+  delete rootProject.buildDir
+}
+repositories {
+  mavenCentral()
+}
+dependencies {
+  compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+  compile "com.squareup.retrofit2:retrofit:2.0.0"
+  compile "com.squareup.retrofit2:converter-moshi:2.0.0"
+  compile 'org.jetbrains.anko:anko-sdk15:0.9' // sdk19, sdk21, sdk23 are also available
+  compile 'org.jetbrains.anko:anko-support-v4:0.9' // In case you need support-v4 bindings
+  compile 'org.jetbrains.anko:anko-appcompat-v7:0.9' // For appcompat-v7 bindings
+}
+sourceSets {
+  main.java.srcDirs += 'src/main/kotlin'
+}
