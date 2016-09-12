@@ -1,4 +1,5 @@
 <resources>
   <string name="app_name">Skml</string>
   <string name="password">password</string>
+  <string name="login">Login</string>
 </resources>
