@@ -33,6 +33,7 @@ class MainActivityUi : AnkoComponent<MainActivity> {
         lparams {
           width = matchParent
           height = wrapContent
+          minHeight = 48
         }
         onClick {
           toast("Hello,${userName.text}")
