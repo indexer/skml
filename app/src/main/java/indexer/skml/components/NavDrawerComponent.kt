@@ -21,8 +21,8 @@ class NavDrawerComponent : AnkoComponent<HomeActivity>, AnkoLogger {
   companion object {
     val TOOLBAR_ID = generateViewId()
     val DRAWER_ID = generateViewId()
+    val FRAME_ID = generateViewId()
   }
-
 
   override fun createView(ui: AnkoContext<HomeActivity>): View = with(ui) {
     drawerLayout {
@@ -40,37 +40,36 @@ class NavDrawerComponent : AnkoComponent<HomeActivity>, AnkoLogger {
           }.lparams(width = matchParent, height = dimenAttr(R.attr.actionBarSize))
         }.lparams(width = matchParent)
 
-        relativeLayout {
+        frameLayout() {
+          id = FRAME_ID
           horizontalPadding = dimen(R.dimen.activity_horizontal_margin)
           verticalPadding = dimen(R.dimen.activity_vertical_margin)
 
-          textView("Hello World!")
         }.lparams(width = matchParent, height = matchParent) {
           behavior = AppBarLayout.ScrollingViewBehavior()
         }
 
+      }
 
-        navigationView {
-          fitsSystemWindows = true
-          val headerContext = AnkoContext.create(ctx, this);
-          val headerView = NavHeaderComponent()
-              .createView(headerContext)
-              .lparams(width = matchParent, height = dimen(R.dimen.nav_header_height))
-          addHeaderView(headerView)
-          inflateMenu(R.menu.activity_home_drawer)
-          if (!isInEditMode) {
-            setNavigationItemSelectedListener(ui.owner)
-          }
-        }.lparams(height = matchParent) {
-          gravity = GravityCompat.START
+      navigationView {
+        fitsSystemWindows = true
+        val headerContext = AnkoContext.create(ctx, this)
+        val headerView = NavHeaderComponent()
+            .createView(headerContext)
+            .lparams(width = matchParent, height = dimen(R.dimen.nav_header_height))
+        addHeaderView(headerView)
+        inflateMenu(R.menu.activity_home_drawer)
+        if (!isInEditMode) {
+          setNavigationItemSelectedListener(ui.owner)
         }
+      }.lparams(height = matchParent) {
+        gravity = GravityCompat.START
+      }
 
-        if (isInEditMode) {
-          openDrawer(GravityCompat.START)
-        }
+      if (isInEditMode) {
+        openDrawer(GravityCompat.START)
       }
 
     }
-
   }
 }
