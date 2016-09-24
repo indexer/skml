@@ -42,8 +42,8 @@ class NavDrawerComponent : AnkoComponent<HomeActivity>, AnkoLogger {
 
         frameLayout() {
           id = FRAME_ID
-          horizontalPadding = dimen(R.dimen.activity_horizontal_margin)
-          verticalPadding = dimen(R.dimen.activity_vertical_margin)
+          /*horizontalPadding = dimen(R.dimen.activity_horizontal_margin)
+          verticalPadding = dimen(R.dimen.activity_vertical_margin)*/
 
         }.lparams(width = matchParent, height = matchParent) {
           behavior = AppBarLayout.ScrollingViewBehavior()

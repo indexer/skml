@@ -11,6 +11,7 @@ import android.view.Menu
 import android.view.MenuItem
 import indexer.skml.components.NavDrawerComponent
 import indexer.skml.components.NavDrawerComponent.Companion.DRAWER_ID
+import indexer.skml.components.NavDrawerComponent.Companion.FRAME_ID
 import indexer.skml.components.NavDrawerComponent.Companion.TOOLBAR_ID
 import indexer.skml.fragments.MainFragment
 import org.jetbrains.anko.AnkoLogger
@@ -41,14 +42,47 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
   override fun onNavigationItemSelected(item: MenuItem): Boolean {
     when (item.itemId) {
-      R.id.nav_camera -> supportFragmentManager.beginTransaction()
-          .replace(NavDrawerComponent.FRAME_ID, MainFragment())
-          .commit()
-      R.id.nav_gallery -> debug("-> gallery")
-      R.id.nav_slideshow -> debug("-> slideshow")
-      R.id.nav_manage -> debug("-> manage")
-      R.id.nav_share -> debug("-> share")
-      R.id.nav_send -> debug("-> send")
+      R.id.nav_camera -> {
+        supportActionBar?.title = "Home"
+        supportFragmentManager.beginTransaction()
+            .replace(FRAME_ID, MainFragment())
+            .commit()
+      }
+
+      R.id.nav_gallery -> {
+        debug("-> gallery")
+        supportFragmentManager.beginTransaction()
+            .replace(FRAME_ID, MainFragment())
+            .commit()
+      }
+
+      R.id.nav_slideshow -> {
+        debug("-> slideshow")
+        supportFragmentManager.beginTransaction()
+            .replace(FRAME_ID, MainFragment())
+            .commit()
+      }
+
+      R.id.nav_manage -> {
+        debug("-> manage")
+        supportFragmentManager.beginTransaction()
+            .replace(FRAME_ID, MainFragment())
+            .commit()
+      }
+
+      R.id.nav_share -> {
+        debug("-> share")
+        supportFragmentManager.beginTransaction()
+            .replace(FRAME_ID, MainFragment())
+            .commit()
+      }
+
+      R.id.nav_send -> {
+        debug("-> send")
+        supportFragmentManager.beginTransaction()
+            .replace(FRAME_ID, MainFragment())
+            .commit()
+      }
     }
 
     drawer.closeDrawer(GravityCompat.START)
