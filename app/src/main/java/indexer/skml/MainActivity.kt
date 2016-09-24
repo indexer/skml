@@ -2,7 +2,7 @@ package indexer.skml
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import indexer.skml.ui.MainActivityUi
+import indexer.skml.components.MainActivityUi
 import org.jetbrains.anko.setContentView
 
 class MainActivity : AppCompatActivity() {

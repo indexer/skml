@@ -2,13 +2,14 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 buildscript {
-  ext.kotlin_version = '1.0.3'
+  ext.kotlin_version = '1.0.4'
   ext.anko_version = '0.9'
+  ext.supportVersion = '24.1.0'
   repositories {
     jcenter()
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:2.2.0-rc1'
+    classpath 'com.android.tools.build:gradle:2.2.0'
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     // NOTE: Do not place your application dependencies here; they belong
     // in the individual module build.gradle files
@@ -37,17 +38,22 @@ android {
   }
 }
 
+repositories {
+  mavenCentral()
+}
+
 dependencies {
-  compile fileTree(dir: 'libs', include: ['*.jar'])
+  compile fileTree(include: ['*.jar'], dir: 'libs')
   androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
-  compile 'com.android.support:appcompat-v7:24.2.0'
-  testCompile 'junit:junit:4.12'
+
   compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-  compile 'org.jetbrains.anko:anko-sdk19:0.9'
-  compile 'org.jetbrains.anko:anko-common:0.9'
-}
-repositories {
-  mavenCentral()
+  def support = ['appcompat-v7', 'design', 'support-v4', 'recyclerview-v7', 'percent', 'cardview-v7']
+  support.each { name -> compile "com.android.support:$name:$supportVersion"
+  }
+  def anko = ['sdk15', 'support-v4', 'design', 'appcompat-v7', 'recyclerview-v7', 'percent', 'cardview-v7']
+
+  anko.each { name -> compile "org.jetbrains.anko:anko-$name:$anko_version"
+  }
 }

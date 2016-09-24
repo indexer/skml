@@ -1,16 +1,15 @@
-package indexer.skml.ui
+package indexer.skml.components
 
 import android.graphics.Color
 import android.text.InputType.TYPE_CLASS_TEXT
 import android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
 import android.view.Gravity
+import indexer.skml.HomeActivity
 import indexer.skml.MainActivity
 import indexer.skml.R
 import org.jetbrains.anko.*
 
-/**
- * Created by indexer on 9/12/16.
- */
+
 class MainActivityUi : AnkoComponent<MainActivity> {
   override fun createView(ui: AnkoContext<MainActivity>) = with(ui) {
     verticalLayout {
@@ -38,6 +37,7 @@ class MainActivityUi : AnkoComponent<MainActivity> {
         }
         onClick {
           toast("${userName.text} +${userPassword.text}")
+          startActivity<HomeActivity>()
         }
       }
     }
