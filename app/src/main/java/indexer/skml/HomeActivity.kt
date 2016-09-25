@@ -1,5 +1,6 @@
 package indexer.skml
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
@@ -14,6 +15,7 @@ import indexer.skml.components.NavDrawerComponent.Companion.DRAWER_ID
 import indexer.skml.components.NavDrawerComponent.Companion.FRAME_ID
 import indexer.skml.components.NavDrawerComponent.Companion.TOOLBAR_ID
 import indexer.skml.fragments.MainFragment
+import indexer.skml.fragments.PeoplesFragment
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.debug
 import org.jetbrains.anko.find
@@ -40,6 +42,10 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     toggle.syncState()
   }
 
+  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    super.onActivityResult(requestCode, resultCode, data)
+  }
+
   override fun onNavigationItemSelected(item: MenuItem): Boolean {
     when (item.itemId) {
       R.id.nav_camera -> {
@@ -50,9 +56,8 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
       }
 
       R.id.nav_gallery -> {
-        debug("-> gallery")
         supportFragmentManager.beginTransaction()
-            .replace(FRAME_ID, MainFragment())
+            .replace(FRAME_ID, PeoplesFragment())
             .commit()
       }
 
