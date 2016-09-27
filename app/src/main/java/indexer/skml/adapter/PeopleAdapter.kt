@@ -1,13 +1,11 @@
 package indexer.skml.adapter
 
 import android.support.v7.widget.RecyclerView
-import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
 import indexer.skml.PeopleContact
-import indexer.skml.extenstions.AnkoViewCompat
-import org.jetbrains.anko.*
+import indexer.skml.components.PeopleItemUI
+import indexer.skml.view.PeopleItemViewHolder
+import org.jetbrains.anko.AnkoContext
 
 
 class PeopleAdapter(var contacts_list: List<PeopleContact>)
@@ -29,30 +27,5 @@ class PeopleAdapter(var contacts_list: List<PeopleContact>)
   }
 }
 
-class PeopleItemUI : AnkoComponent<ViewGroup> {
-  companion object {
-    val user_name = AnkoViewCompat.generateViewId()
-  }
 
-  override fun createView(ui: AnkoContext<ViewGroup>): View {
-    return with(ui) {
-      linearLayout {
-        lparams(width = matchParent, height = dip(48))
-        orientation = LinearLayout.HORIZONTAL
-        textView {
-          id = 1
-          textSize = 16f
-        }
-      }
-    }
-  }
-}
-
-class PeopleItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-  val name: TextView = itemView.find(1)
-
-  fun bind(contacts_list: PeopleContact) {
-    name.text = contacts_list.name
-  }
-}
 

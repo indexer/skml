@@ -53,7 +53,10 @@ dependencies {
   support.each { name -> compile "com.android.support:$name:$supportVersion"
   }
   def anko = ['sdk15', 'support-v4', 'design', 'appcompat-v7', 'recyclerview-v7', 'percent', 'cardview-v7']
-
   anko.each { name -> compile "org.jetbrains.anko:anko-$name:$anko_version"
   }
+}
+
+kapt {
+  generateStubs = true
 }
