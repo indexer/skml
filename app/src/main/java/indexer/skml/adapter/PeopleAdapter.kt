@@ -11,6 +11,7 @@ import org.jetbrains.anko.AnkoContext
 class PeopleAdapter(var contacts_list: List<PeopleContact>)
 : RecyclerView.Adapter<PeopleItemViewHolder>() {
 
+  val plus_one = 1
 
   override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): PeopleItemViewHolder? {
     return PeopleItemViewHolder(PeopleItemUI().createView(AnkoContext.create(parent!!.context,
@@ -18,12 +19,17 @@ class PeopleAdapter(var contacts_list: List<PeopleContact>)
   }
 
   override fun onBindViewHolder(holder: PeopleItemViewHolder?, position: Int) {
-    val contacts_people = contacts_list[position]
-    holder!!.bind(contacts_people)
+    if (position == 0) {
+
+    } else {
+      val contacts_people = contacts_list[position - plus_one]
+      holder!!.bind(contacts_people)
+    }
   }
 
   override fun getItemCount(): Int {
-    return contacts_list.size
+    if (contacts_list.size > 0) return contacts_list.size + plus_one
+    else return plus_one
   }
 }
 
