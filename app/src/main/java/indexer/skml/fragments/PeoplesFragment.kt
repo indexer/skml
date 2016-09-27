@@ -58,9 +58,7 @@ class PeoplesFragment : Fragment() {
           height = matchParent
         }
         textView {
-          text = "Choose people are your emeergency" +
-              " contacts and will be alreted " +
-              "when you're in danger or just feeling unsafe"
+          textResource = R.string.alert
           textSize = 18F
           textColor = R.color.primary_text
           lparams {

@@ -5,6 +5,9 @@
   <string name="title_activity_home">HomeActivity</string>
 
   <style name="alert">Alert</style>
+  <string name="alert">"Choose people are your emergency"
+              " contacts and will be alerted "
+              "when you're in danger or just feeling unsafe"</string>
 
   <string name="navigation_drawer_open">Open navigation drawer</string>
   <string name="navigation_drawer_close">Close navigation drawer</string>

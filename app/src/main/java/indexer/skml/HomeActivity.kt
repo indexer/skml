@@ -1,5 +1,6 @@
 package indexer.skml
 
+import android.Manifest
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
@@ -16,6 +17,7 @@ import indexer.skml.components.NavDrawerComponent.Companion.FRAME_ID
 import indexer.skml.components.NavDrawerComponent.Companion.TOOLBAR_ID
 import indexer.skml.fragments.MainFragment
 import indexer.skml.fragments.PeoplesFragment
+import indexer.skml.utils.givenPermission
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.debug
 import org.jetbrains.anko.find
@@ -25,6 +27,10 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
   lateinit var drawer: DrawerLayout
   lateinit var toolbar: Toolbar
+
+  companion object {
+    const val PERMISSIONS_REQUEST_SMS_READCONTACTS = 1001
+  }
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -38,6 +44,11 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     val toggle = ActionBarDrawerToggle(
         this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
     drawer.addDrawerListener(toggle)
+
+    //ToDO check permission from resume or on activity
+    givenPermission(arrayOf(Manifest.permission.SEND_SMS,
+        Manifest.permission.READ_CONTACTS), PERMISSIONS_REQUEST_SMS_READCONTACTS, {})
+
 
     toggle.syncState()
   }
