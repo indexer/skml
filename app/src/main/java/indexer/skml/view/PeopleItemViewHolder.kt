@@ -22,6 +22,7 @@ class PeopleItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
   fun bind(contacts_list: PeopleContact) {
     name = itemView.find<TextView>(UserName_ID)
     phone = itemView.find<TextView>(UserPhone_ID)
+
     name.text = contacts_list.name
     phone.text = contacts_list.phone
   }

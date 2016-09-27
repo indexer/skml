@@ -30,8 +30,6 @@ class NavDrawerComponent : AnkoComponent<HomeActivity>, AnkoLogger {
       fitsSystemWindows = true
 
       coordinatorLayout {
-        fitsSystemWindows = true
-
         appBarLayout(R.style.AppTheme_AppBarOverlay) {
           toolbar {
             id = TOOLBAR_ID
@@ -39,12 +37,8 @@ class NavDrawerComponent : AnkoComponent<HomeActivity>, AnkoLogger {
             popupTheme = AppTheme_PopupOverlay
           }.lparams(width = matchParent, height = dimenAttr(R.attr.actionBarSize))
         }.lparams(width = matchParent)
-
         frameLayout() {
           id = FRAME_ID
-          /*horizontalPadding = dimen(R.dimen.activity_horizontal_margin)
-          verticalPadding = dimen(R.dimen.activity_vertical_margin)*/
-
         }.lparams(width = matchParent, height = matchParent) {
           behavior = AppBarLayout.ScrollingViewBehavior()
         }

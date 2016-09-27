@@ -25,8 +25,7 @@ class MainActivityUi : AnkoComponent<MainActivity> {
         inputType = TYPE_CLASS_TEXT or TYPE_TEXT_VARIATION_PASSWORD
       }
 
-      val loginButton = button {
-
+      button {
         textResource = R.string.login
         backgroundColor = Color.parseColor("#388E3C")
         textColor = Color.parseColor("#ebebeb")
@@ -43,6 +42,7 @@ class MainActivityUi : AnkoComponent<MainActivity> {
     }
 
   }
+
 }
 
 
