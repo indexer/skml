@@ -3,6 +3,7 @@ package indexer.skml.adapter
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import indexer.skml.PeopleContact
+import indexer.skml.components.AddPeopleComponent
 import indexer.skml.components.PeopleItemUI
 import indexer.skml.view.AddPeopleItemViewHolder
 import indexer.skml.view.PeopleItemViewHolder
@@ -22,23 +23,21 @@ class PeopleAdapter(var contacts_list: List<PeopleContact>)
     }
   }
 
-  override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): PeopleItemViewHolder? {
+  override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder? {
     if (viewType == item_type.added_user.ordinal) {
-      return PeopleItemViewHolder(PeopleItemUI().createView(AnkoContext.create(parent!!.context,
-          parent)))
+      return PeopleItemViewHolder(parent)
     } else {
-      return PeopleItemViewHolder(PeopleItemUI().createView(AnkoContext.create(parent!!.context,
-          parent)))
+      return AddPeopleViewHolder(parent)
     }
   }
 
-  fun PeopleItemViewHolder(parent: ViewGroup?, viewType: Int): PeopleItemViewHolder? {
+  fun PeopleItemViewHolder(parent: ViewGroup?): PeopleItemViewHolder? {
     return PeopleItemViewHolder(PeopleItemUI().createView(AnkoContext.create(parent!!.context,
         parent)))
   }
 
-  fun onAddPeopleViewHolder(parent: ViewGroup?, viewType: Int): AddPeopleItemViewHolder? {
-    return AddPeopleItemViewHolder(PeopleItemUI().createView(AnkoContext.create(parent!!.context,
+  fun AddPeopleViewHolder(parent: ViewGroup?): AddPeopleItemViewHolder? {
+    return AddPeopleItemViewHolder(AddPeopleComponent().createView(AnkoContext.create(parent!!.context,
         parent)))
   }
 
