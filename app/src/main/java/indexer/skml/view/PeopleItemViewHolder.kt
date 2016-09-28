@@ -13,8 +13,7 @@ import org.jetbrains.anko.find
  * Created by indexer on 9/27/16.
  */
 class PeopleItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-  /*val name: TextView = itemView.find()
-  val phone: TextView = itemView.find(2)*/
+
 
   lateinit var name: TextView
   lateinit var phone: TextView

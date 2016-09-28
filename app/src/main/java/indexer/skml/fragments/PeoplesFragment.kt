@@ -12,21 +12,34 @@ import android.view.ViewGroup
 import indexer.skml.PeopleContact
 import indexer.skml.R
 import indexer.skml.adapter.PeopleAdapter
+import indexer.skml.interfaces.AddPeople
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.support.v4.UI
 import java.util.*
 
 
-class PeoplesFragment : Fragment() {
+class PeoplesFragment : Fragment(), AddPeople {
+
+
+  override fun addUser() {
+    val intent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
+    intent.type = ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE
+    startActivityForResult(intent, request_code)
+  }
+
+  override fun removeUser() {
+    throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+  }
+
   lateinit var people_list: RecyclerView
   val contacts_list: ArrayList<PeopleContact> = ArrayList()
   val request_code = 111
+  var people_adapter: PeopleAdapter? = null
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-
-
+    people_adapter = PeopleAdapter(contacts_list, this)
   }
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
@@ -40,12 +53,10 @@ class PeoplesFragment : Fragment() {
       val column_display_phone = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
       val user_display_name = cursor.getString(column_display_name)
       val user_phone = cursor.getString(column_display_phone)
-
       contacts_list.add(PeopleContact(user_display_name, user_phone))
       people_list.adapter.notifyDataSetChanged()
       cursor.close()
     }
-
   }
 
   override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -79,26 +90,11 @@ class PeoplesFragment : Fragment() {
         }
         people_list = recyclerView {
           layoutManager = LinearLayoutManager(activity)
-          adapter = PeopleAdapter(contacts_list)
+          adapter = people_adapter
           lparams {
             margin = dimen(R.dimen.activity_horizontal_margin)
             width = matchParent
             height = wrapContent
-          }
-        }
-        button {
-          backgroundColor = R.color.accent
-          text = "Add New People"
-          lparams {
-            width = matchParent
-            height = wrapContent
-            margin = 16
-            padding = 8
-          }
-          onClick {
-            val intent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
-            intent.type = ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE
-            startActivityForResult(intent, request_code)
           }
         }
       }

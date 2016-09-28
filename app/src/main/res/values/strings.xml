@@ -8,6 +8,7 @@
   <string name="alert">"Choose people are your emergency"
               " contacts and will be alerted "
               "when you're in danger or just feeling unsafe"</string>
+  <string name="add_people">Add New People</string>
 
   <string name="navigation_drawer_open">Open navigation drawer</string>
   <string name="navigation_drawer_close">Close navigation drawer</string>

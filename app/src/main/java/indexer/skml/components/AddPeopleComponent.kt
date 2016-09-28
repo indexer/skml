@@ -3,6 +3,7 @@ package indexer.skml.components
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import indexer.skml.R
 import indexer.skml.extenstions.AnkoViewCompat
 import org.jetbrains.anko.*
 
@@ -12,8 +13,7 @@ import org.jetbrains.anko.*
 class AddPeopleComponent : AnkoComponent<ViewGroup> {
 
   companion object {
-    val UserName_ID = AnkoViewCompat.generateViewId()
-    val UserPhone_ID = AnkoViewCompat.generateViewId()
+    val AddButton_ID = AnkoViewCompat.generateViewId()
   }
 
   override fun createView(ui: AnkoContext<ViewGroup>): View {
@@ -26,21 +26,18 @@ class AddPeopleComponent : AnkoComponent<ViewGroup> {
         }
         orientation = LinearLayout.VERTICAL
 
-        textView {
-          id = UserName_ID
+        button {
+          id = AddButton_ID
+          width = matchParent
+          height = wrapContent
+          text = resources.getString(R.string.add_people)
           textSize = 16f
+          backgroundColor = R.color.primary
           lparams {
             padding = 8
           }
         }
 
-        textView {
-          id = UserPhone_ID
-          textSize = 16f
-          lparams {
-            padding = 8
-          }
-        }
       }
     }
   }
