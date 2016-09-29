@@ -3,6 +3,7 @@
     package="indexer.skml"
     >
 
+  <uses-permission android:name="android.permission.INTERNET"/>
   <uses-permission android:name="android.permission.SEND_SMS"/>
   <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
@@ -13,8 +14,6 @@
       android:supportsRtl="true"
       android:theme="@style/AppTheme"
       >
-
-
     <activity android:name=".MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>

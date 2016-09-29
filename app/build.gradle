@@ -49,6 +49,8 @@ dependencies {
   })
 
   compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+  compile 'com.squareup.picasso:picasso:2.5.2'
+
   def support = ['appcompat-v7', 'design', 'support-v4', 'recyclerview-v7', 'percent', 'cardview-v7']
   support.each { name -> compile "com.android.support:$name:$supportVersion"
   }

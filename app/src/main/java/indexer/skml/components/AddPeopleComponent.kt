@@ -1,5 +1,6 @@
 package indexer.skml.components
 
+import android.graphics.Color
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
@@ -19,23 +20,26 @@ class AddPeopleComponent : AnkoComponent<ViewGroup> {
   override fun createView(ui: AnkoContext<ViewGroup>): View {
     return with(ui) {
       linearLayout {
+
         lparams {
           width = matchParent
           height = wrapContent
-          margin = 16
         }
         orientation = LinearLayout.VERTICAL
 
         button {
           id = AddButton_ID
-          width = matchParent
-          height = wrapContent
+          textColor = Color.parseColor("#ebebeb")
+          backgroundColor = Color.parseColor("#FF9800")
+          textColor = R.color.primary_text
           text = resources.getString(R.string.add_people)
-          textSize = 16f
-          backgroundColor = R.color.primary
+          textSize = 13f
           lparams {
-            padding = 8
+            width = matchParent
+            height = matchParent
+            margin = 8
           }
+
         }
 
       }
