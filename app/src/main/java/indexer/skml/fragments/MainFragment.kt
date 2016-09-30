@@ -6,6 +6,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.TextView
 import indexer.skml.R
 import org.jetbrains.anko.*
@@ -16,6 +17,7 @@ import org.jetbrains.anko.support.v4.UI
  */
 class MainFragment : Fragment() {
   lateinit var user_name: TextView
+  lateinit var user_message: EditText
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -49,10 +51,8 @@ class MainFragment : Fragment() {
           width = matchParent
           height = matchParent
         }
-        setBackgroundColor(resources.getColor(R.color.primary))
 
         user_name = textView {
-          gravity = Gravity.CENTER_HORIZONTAL
           text = "Send an alert"
           textSize = 26F
           textColor = resources.getColor(R.color.primary_text)
@@ -62,6 +62,16 @@ class MainFragment : Fragment() {
             minHeight = 48
           }
         }
+
+        user_message = editText {
+          gravity = Gravity.CENTER_HORIZONTAL
+          hint = "Alert message"
+          setText("Type your message to send")
+          lparams {
+            below(user_name)
+          }
+        }
+
       }
     }.view
   }

@@ -79,13 +79,6 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             .commit()
       }
 
-      R.id.nav_manage -> {
-        debug("-> manage")
-        supportFragmentManager.beginTransaction()
-            .replace(FRAME_ID, MainFragment())
-            .commit()
-      }
-
       R.id.nav_share -> {
         debug("-> share")
         supportFragmentManager.beginTransaction()

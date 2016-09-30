@@ -31,8 +31,12 @@ class NavHeaderComponent : AnkoComponent<NavigationView> {
             gravity = START
           }
 
-      image_view.load("https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150")
-      { request -> request.centerCrop().resize(200, 200) }
+      image_view.load("https://placeholdit.imgix.net/" +
+          "~text?txtsize=33&txt=350%C3%97150&w=350&h=150")
+      { request ->
+        request.centerCrop().resize(200, 200)
+            .placeholder(R.mipmap.ic_launcher)
+      }
 
 
       textView("Android Studio") {
